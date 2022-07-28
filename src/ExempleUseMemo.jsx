@@ -1,11 +1,12 @@
 import P from 'prop-types';
-import { useEffect, useMemo, useState } from 'react';
+import React from 'react';
 import './App.css';
 
+//Componente filho
 const Post = ({ post }) => {
   console.log('Filho renderizou');
   return (
-    <div key={post.id} className="post">
+    <div key={post.id}>
       <h1>{post.title}</h1>
       <p>{post.body}</p>
     </div>
@@ -20,19 +21,29 @@ Post.propTypes = {
   }),
 };
 
-export default function AppUseMemo() {
-  const [posts, setPosts] = useState([]);
-  const [value, setValue] = useState('');
+export default function ExempleUseMemo() {
+  const [posts, setPosts] = React.useState([]);
+  const [value, setValue] = React.useState('');
   console.log('Pai renderizou');
 
   //Component did mount
-  useEffect(() => {
+  React.useEffect(() => {
     setTimeout(() => {
       fetch('https://jsonplaceholder.typicode.com/posts')
         .then((r) => r.json())
         .then((r) => setPosts(r));
     }, 5000);
   }, []);
+
+  const mapPost = React.useMemo(
+    () =>
+      posts.length <= 0 ? (
+        <p>Ainda não existem posts.</p>
+      ) : (
+        posts.map((post) => <Post key={post.id} post={post} />)
+      ),
+    [posts],
+  );
 
   return (
     <div className="App">
@@ -45,15 +56,7 @@ export default function AppUseMemo() {
           }}
         />
       </p>
-      {useMemo(() => {
-        return (
-          posts.length > 0 &&
-          posts.map((post) => {
-            return <Post key={post.id} post={post} />;
-          })
-        );
-      }, [posts])}
-      {posts.length <= 0 && <p>Ainda não existem posts.</p>}
+      {mapPost}
     </div>
   );
 }

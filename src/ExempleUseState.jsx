@@ -1,21 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import React from 'react';
 
-export default function AppState() {
-  const [counter, setCounter] = useState(0);
-  const [reverse, setReverse] = useState(false);
-  const reverseClass = reverse ? 'reverse' : '';
+export default function ExempleUseState() {
+  const [counter, setCounter] = React.useState(0);
+  const [reverse, setReverse] = React.useState(false);
+  const reverseClass = reverse ? 'App-logo-reverse' : '';
 
   const handleIncrement = () => {
+    //usando funções de callback sem utilizar diretamente o valor original de counter
     setCounter((counter) => counter + 10);
+    /* setCounter((prevCounter) => prevCounter + 10); */
   };
 
   const handleDecrement = () => {
+    //usando o valor atual de counter
     setCounter(counter - 10);
   };
 
   const handleReverse = () => {
+    //usando funções de callback sem utilizar diretamente o valor original de reverse
     setReverse((reverse) => !reverse);
   };
 

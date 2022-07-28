@@ -11,7 +11,7 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-  .reverse {
+  .App-logo-reverse {
     animation: App-logo-spin-reverse infinite 20s linear;
   }
 }
