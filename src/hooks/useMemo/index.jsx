@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import '../../App.css';
 import { Post } from './Post';
 
-export default function ExampleUseMemo() {
+export function App() {
   const [posts, setPosts] = useState([]);
   const [value, setValue] = useState('');
   console.log('Pai renderizou');

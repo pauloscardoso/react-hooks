@@ -3,7 +3,7 @@ import '../../App.css';
 import React from 'react';
 import { useMemo } from 'react';
 
-export default function ExampleUseState() {
+export function App() {
   const [counter, setCounter] = React.useState(0);
   const [reverse, setReverse] = React.useState(false);
   const reverseClass = reverse ? 'App-logo-reverse' : '';
@@ -20,10 +20,7 @@ export default function ExampleUseState() {
     setReverse((reverse) => !reverse);
   }
 
-  const ChangeTitle = useMemo(
-    () => (reverse ? 'Inverse' : 'Reverse'),
-    [reverse],
-  );
+  const ChangeTitle = useMemo(() => (reverse ? 'Inverse' : 'Reverse'), [reverse]);
 
   return (
     <div className="App">

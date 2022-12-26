@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import '../../App.css';
 import { Post } from './Post';
 
-export default function ExampleUseRef() {
+export function App() {
   const [posts, setPosts] = useState([]);
   const [value, setValue] = useState('');
   const inputRef = useRef(null);
@@ -35,9 +35,7 @@ export default function ExampleUseRef() {
       posts.length <= 0 ? (
         <p>Ainda não existem posts.</p>
       ) : (
-        posts.map((post) => (
-          <Post key={post.id} post={post} handleClick={handleClick} />
-        ))
+        posts.map((post) => <Post key={post.id} post={post} handleClick={handleClick} />)
       ),
     [posts],
   );

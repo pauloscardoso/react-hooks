@@ -3,7 +3,7 @@ import '../../App.css';
 import { Button } from './Button';
 
 //useCallback geralmente é utilizado em otimizações
-export default function ExampleUseCallback() {
+export function App() {
   const [counter, setCounter] = React.useState(0);
 
   // const incrementCounter = React.useCallback(

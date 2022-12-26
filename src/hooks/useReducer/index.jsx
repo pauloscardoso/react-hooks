@@ -4,7 +4,7 @@ import '../../App.css';
 import { reducer } from './store/reducer';
 import { initialState } from './store/initialState';
 
-export function ExempleUseReducer() {
+export function App() {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const { counter, title, body } = state;
 
