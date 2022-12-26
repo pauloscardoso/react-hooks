@@ -1,27 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from '../../logo.svg';
+import '../../App.css';
 import React from 'react';
+import { useMemo } from 'react';
 
-export default function ExempleUseState() {
+export default function ExampleUseState() {
   const [counter, setCounter] = React.useState(0);
   const [reverse, setReverse] = React.useState(false);
   const reverseClass = reverse ? 'App-logo-reverse' : '';
 
-  const handleIncrement = () => {
-    //usando funções de callback sem utilizar diretamente o valor original de counter
+  function handleIncrement() {
     setCounter((counter) => counter + 10);
-    /* setCounter((prevCounter) => prevCounter + 10); */
-  };
+  }
 
-  const handleDecrement = () => {
-    //usando o valor atual de counter
+  function handleDecrement() {
     setCounter(counter - 10);
-  };
+  }
 
-  const handleReverse = () => {
-    //usando funções de callback sem utilizar diretamente o valor original de reverse
+  function handleReverse() {
     setReverse((reverse) => !reverse);
-  };
+  }
+
+  const ChangeTitle = useMemo(
+    () => (reverse ? 'Inverse' : 'Reverse'),
+    [reverse],
+  );
 
   return (
     <div className="App">
@@ -30,15 +32,15 @@ export default function ExempleUseState() {
         <h1>Contador: {counter}</h1>
         <p>
           <button type="button" onClick={handleIncrement}>
-            Increment {setCounter}
+            Increment
           </button>
           <button type="button" onClick={handleDecrement}>
-            Decrement {setCounter}
+            Decrement
           </button>
         </p>
         <p>
           <button type="button" onClick={handleReverse}>
-            Reverse {reverseClass}
+            {ChangeTitle}
           </button>
         </p>
       </header>

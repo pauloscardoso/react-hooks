@@ -1,17 +1,17 @@
 import React from 'react';
-import './App.css';
+import '../../App.css';
 
 const eventFn = () => {
   console.log('h1 clicado');
 };
 
-export default function ExempleUseEffect() {
+export default function ExampleUseEffect() {
   const [counter, setCounter] = React.useState(0);
   const [counter2, setCounter2] = React.useState(0);
 
   // componentDidMount - executa uma única vez
   React.useEffect(() => {
-    //Encadeamento Opcional (?). Verifica se a primeira expressão existe antes de executar a segunda expressão que fica depois do dot. Se tiver, ele executa, se não tiver ele executa a segunda expressão e não gera o erro.
+    //Encadeamento Opcional (?). Verifica se a primeira expressão existe antes de executar a segunda expressão que fica depois do dot (.). Se tiver, ele executa, se não tiver ele executa a segunda expressão e não gera o erro.
     //Aqui, caso o h1 não existisse, o Encadeamento Opcional não executaria o addEventListener.
     document.querySelector('h1')?.addEventListener('click', eventFn);
     // componentWillUnmount - limpeza
@@ -23,7 +23,7 @@ export default function ExempleUseEffect() {
   // Com dependência - executa toda vez que a dependência mudar
   React.useEffect(() => {
     console.log('Contador mudou para', counter, counter2);
-    /* setCounter(10); */ //loop infinitely
+    // setCounter(10); //loop infinitely
   }, [counter, counter2]);
 
   return (
@@ -40,11 +40,6 @@ export default function ExempleUseEffect() {
           +C2
         </button>
       </p>
-      {/* <p>
-        <button className="btn" onClick={() => setCounter(counter - 1)}>
-          -
-        </button>
-      </p> */}
     </div>
   );
 }

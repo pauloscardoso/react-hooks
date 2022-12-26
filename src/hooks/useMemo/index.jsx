@@ -1,41 +1,21 @@
-import P from 'prop-types';
-import React from 'react';
-import './App.css';
+import React, { useEffect, useMemo, useState } from 'react';
+import '../../App.css';
+import { Post } from './Post';
 
-//Componente filho
-const Post = ({ post }) => {
-  console.log('Filho renderizou');
-  return (
-    <div key={post.id}>
-      <h1>{post.title}</h1>
-      <p>{post.body}</p>
-    </div>
-  );
-};
-
-Post.propTypes = {
-  post: P.shape({
-    id: P.number,
-    title: P.string,
-    body: P.string,
-  }),
-};
-
-export default function ExempleUseMemo() {
-  const [posts, setPosts] = React.useState([]);
-  const [value, setValue] = React.useState('');
+export default function ExampleUseMemo() {
+  const [posts, setPosts] = useState([]);
+  const [value, setValue] = useState('');
   console.log('Pai renderizou');
 
-  //Component did mount
-  React.useEffect(() => {
+  useEffect(() => {
     setTimeout(() => {
       fetch('https://jsonplaceholder.typicode.com/posts')
         .then((r) => r.json())
         .then((r) => setPosts(r));
-    }, 5000);
+    }, 3500);
   }, []);
 
-  const mapPost = React.useMemo(
+  const mapPost = useMemo(
     () =>
       posts.length <= 0 ? (
         <p>Ainda não existem posts.</p>

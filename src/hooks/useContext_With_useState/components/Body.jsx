@@ -1,13 +1,12 @@
-import React from 'react';
-import { GlobalContext } from './Context';
+import React, { useContext } from 'react';
+import { GlobalContext } from '../store/globalContext';
 
-// eslint-disable-next-line
-export const H3 = ({ children }) => {
-  const theContext = React.useContext(GlobalContext);
+export const Body = () => {
+  const context = useContext(GlobalContext);
   const {
     contextState: { body },
     setContextState,
-  } = theContext;
+  } = context;
   return (
     <h3
       onClick={() =>
