@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { DisplayCounted } from './DisplayCounted';
 
 export const App = () => {
