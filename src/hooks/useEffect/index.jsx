@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../App.css';
 
 const eventFn = () => {
@@ -6,11 +6,11 @@ const eventFn = () => {
 };
 
 export default function ExampleUseEffect() {
-  const [counter, setCounter] = React.useState(0);
-  const [counter2, setCounter2] = React.useState(0);
+  const [counter, setCounter] = useState(0);
+  const [counter2, setCounter2] = useState(0);
 
   // componentDidMount - executa uma única vez
-  React.useEffect(() => {
+  useEffect(() => {
     //Encadeamento Opcional (?). Verifica se a primeira expressão existe antes de executar a segunda expressão que fica depois do dot (.). Se tiver, ele executa, se não tiver ele executa a segunda expressão e não gera o erro.
     //Aqui, caso o h1 não existisse, o Encadeamento Opcional não executaria o addEventListener.
     document.querySelector('h1')?.addEventListener('click', eventFn);
@@ -21,7 +21,7 @@ export default function ExampleUseEffect() {
   }, []); //array de dependências
 
   // Com dependência - executa toda vez que a dependência mudar
-  React.useEffect(() => {
+  useEffect(() => {
     console.log('Contador mudou para', counter, counter2);
     // setCounter(10); //loop infinitely
   }, [counter, counter2]);

@@ -1,11 +1,11 @@
 import logo from '../../logo.svg';
 import '../../App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import { useMemo } from 'react';
 
 export function App() {
-  const [counter, setCounter] = React.useState(0);
-  const [reverse, setReverse] = React.useState(false);
+  const [counter, setCounter] = useState(0);
+  const [reverse, setReverse] = useState(false);
   const reverseClass = reverse ? 'App-logo-reverse' : '';
 
   function handleIncrement() {

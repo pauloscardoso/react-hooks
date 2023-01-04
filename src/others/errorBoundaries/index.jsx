@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { Component, useEffect, useState } from 'react';
 
 class ErrorBoundary extends Component {

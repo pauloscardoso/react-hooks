@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useAsync } from './hook/useAsync';
 
 const fetchData = async () => {
