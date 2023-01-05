@@ -1,4 +1,4 @@
-import * as actionTypes from './action-types';
+import * as actionTypes from './actions';
 
 export const buildActions = (dispatch) => {
   return {
@@ -17,7 +17,7 @@ const asyncIncreaseFn = async (dispatch) => {
   return await new Promise((r) => {
     setTimeout(() => {
       dispatch({ type: actionTypes.ASYNC_INCREASE_END });
-      r('RESOLVED!');
+      r('it was good!');
     }, 2000);
   });
 };
@@ -28,7 +28,7 @@ const asyncErrorFn = async (dispatch) => {
   return await new Promise((resolve, reject) => {
     setTimeout(() => {
       dispatch({ type: actionTypes.ASYNC_INCREASE_ERROR });
-      reject(new Error('Deu ruim!'));
+      reject(new Error('it went bad!'));
     }, 2000);
   });
 };

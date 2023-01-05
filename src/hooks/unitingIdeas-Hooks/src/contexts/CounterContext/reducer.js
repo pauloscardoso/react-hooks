@@ -1,5 +1,5 @@
 import { initialState } from '.';
-import * as actionTypes from './action-types';
+import * as actionTypes from './actions';
 
 export const reducer = (state, action) => {
   console.log(action);
@@ -20,6 +20,5 @@ export const reducer = (state, action) => {
     case actionTypes.ASYNC_INCREASE_ERROR:
       return { ...state, loading: false };
   }
-
   return state;
 };
